@@ -1,0 +1,18 @@
+- content_for :breadcrumb do
+  %li
+    = link_to 'Home', root_path
+    %span.divider
+  %li.active Comments
+
+%h1 Comments
+
+%ul{:class => 'comments'}
+  - @comments.each do |comment|
+    = render partial: 'shared/comment', locals: {comment: comment}
+
+%p
+  %a{:href => '?'} Show All
+
+%hr
+
+= render 'form'

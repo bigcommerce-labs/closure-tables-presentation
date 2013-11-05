@@ -1,0 +1,16 @@
+
+%li{:style => 'padding-left: '+(comment.depth*40).to_s+'px'}
+  %div.comment-container
+
+    %a.comment_id{:href => '?parent='+comment.id.to_s}= comment.id.to_s
+    %div.right
+      %span.date{:title => comment.rank}= comment.created_at.to_s(:short)
+
+      %div.comment-actions
+        %a{:href => '#nc-form',:onclick => "document.getElementById('nc_parent_id').value='"+comment.id.to_s+"';document.getElementById('nc_author').focus();"} Reply
+        |
+        %a{:href => '?delete='+comment.id.to_s} Delete
+
+    %span.author= comment.author
+
+    %p= comment.body

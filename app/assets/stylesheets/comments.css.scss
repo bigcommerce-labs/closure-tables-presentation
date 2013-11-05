@@ -1,0 +1,40 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ul.comments {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin: 10px;
+    div.comment-container {
+      border-radius: 4px;
+      padding: 7px 10px .1px;
+      background-color: #ddd;
+    }
+    div.right {
+      float: right;
+      text-align: right;
+      .date {
+        font-size: 10px;
+      }
+    }
+    .comment_id {
+      font-size: 1.1em;
+    }
+    .author {
+      font-weight: bold;
+    }
+  }
+  .comment-actions {
+    font-size: .9em;
+    vertical-align: bottom;
+    margin-top: 10px;
+  }
+}
+
+.comment-form {
+  margin: 0 30px;
+}
