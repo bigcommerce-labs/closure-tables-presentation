@@ -4,6 +4,7 @@ config/database.yml
 nbproject
 .idea
 /TODO.md
+/NOTES.md
 
 # Ignore bundler config.
 /.bundle

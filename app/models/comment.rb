@@ -1,8 +1,11 @@
 class Comment < ActiveRecord::Base
   has_one :parent, class_name: Comment
-  has_many :children, class_name: Comment, :foreign_key => :parent_id, dependent: :destroy
-  has_many :descendant_closures, :class_name => CommentClosure, :foreign_key => :descendant_id, dependent: :destroy
-  has_many :ancestor_closures, :class_name => CommentClosure, :foreign_key => :ancestor_id, dependent: :destroy
+  has_many :children, class_name: Comment,
+           :foreign_key => :parent_id, dependent: :destroy
+  has_many :descendant_closures, :class_name => CommentClosure,
+           :foreign_key => :descendant_id, dependent: :destroy
+  has_many :ancestor_closures, :class_name => CommentClosure,
+           :foreign_key => :ancestor_id, dependent: :destroy
 
   validates :thread_key, :body, presence: true
 
@@ -37,7 +40,9 @@ class Comment < ActiveRecord::Base
       return false
     end
 
-    heredity = CommentClosure.where('descendant_id = ? AND ancestor_id != ?',self.parent_id,0).order(depth: :desc)
+    heredity = CommentClosure.where('descendant_id = ? AND ancestor_id != ?',
+                                    self.parent_id,0)
+      .order(depth: :desc)
 
     # add root closure
     root_closure = CommentClosure.new
